@@ -25,17 +25,15 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: signconnect/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
-        working-directory: signconnect
         run: npm ci
       - name: Build static site
-        working-directory: signconnect
         run: npm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: signconnect/out
+          path: out
 
   deploy:
     environment:
